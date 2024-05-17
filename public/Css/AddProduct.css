@@ -1,0 +1,144 @@
+.ck-placeholder
+{
+    padding: 45px;
+}
+
+/* Your CSS */
+.input-div {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid #dcf0d4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0px 0px 100px #dcf0d4 , inset 0px 0px 10px #dcf0d4,0px 0px 5px #dcf0d4;
+    animation: flicker 2s linear infinite;
+}
+
+.icon {
+    color: rgb(1, 235, 252);
+    font-size: 2rem;
+    cursor: pointer;
+    animation: iconflicker 2s linear infinite;
+
+    position: relative; /* Added */
+    z-index: 1; /* Added */
+    opacity: 1; /* Changed from 1 to maintain visibility */
+}
+
+.input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer !important;
+}
+
+.remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    display: none; /* Hide the remove button initially */
+}
+
+#preview {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+@keyframes flicker {
+    0% {
+        border: 2px solid rgb(1, 235, 252);
+        box-shadow: 0px 0px 100px rgb(1, 235, 252) , inset 0px 0px 10px rgb(1, 235, 252),0px 0px 5px rgb(255, 255, 255);
+    }
+
+    5% {
+        border: none;
+        box-shadow: none;
+    }
+
+    10% {
+        border: 2px solid rgb(1, 235, 252);
+
+        box-shadow: 0px 0px 100px rgb(1, 235, 252) , inset 0px 0px 10px rgb(1, 235, 252),0px 0px 5px rgb(255, 255, 255);
+    }
+
+    25% {
+        border: none;
+        box-shadow: none;
+    }
+
+    30% {
+        border: 2px solid rgb(1, 235, 252);
+        box-shadow: 0px 0px 100px rgb(1, 235, 252) , inset 0px 0px 10px rgb(1, 235, 252),0px 0px 5px rgb(255, 255, 255);
+    }
+
+    100% {
+        border: 2px solid rgb(1, 235, 252);
+        box-shadow: 0px 0px 100px rgb(1, 235, 252) , inset 0px 0px 10px rgb(1, 235, 252),0px 0px 5px rgb(255, 255, 255);
+    }
+}
+
+@keyframes iconflicker {
+    0% {
+        opacity: 1;
+    }
+
+    5% {
+        opacity: 0.2;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0.2;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.preview-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.preview-img-container {
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid green;
+    padding: 10px;
+    display: inline-block;
+}
+.preview-img {
+    max-width: 100px;
+    max-height: 100px;
+    display: block;
+    border-radius: 5px;
+}
+.remove-icon {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 3px;
+    color: red;
+}
