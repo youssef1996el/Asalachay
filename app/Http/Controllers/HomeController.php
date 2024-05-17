@@ -86,11 +86,12 @@ class HomeController extends Controller
         try
         {
             //$categories = Category::take(8)->get();
-            $categories = Category::select('category.name as category_name', 'category.id as id')
-            ->leftJoin('products', 'category.id', '=', 'products.idcategory')
-            ->selectRaw('count(products.id) as product_count')
-            ->groupBy('category.id')
-            ->get();
+            $categories = DB::select("
+            SELECT category.name as category_name, category.id as id, COUNT(products.id) as product_count
+            FROM category
+            LEFT JOIN products ON category.id = products.idcategory
+            GROUP BY category.id
+        ");
 
 
             $Featured_Products = DB::table('products as p')
