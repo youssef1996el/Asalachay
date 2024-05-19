@@ -153,12 +153,18 @@ $(document).ready(function () {
             {
                 if(response.status == 200)
                 {
+
                     $('#quickview_modal').modal("show");
 
                     $('.product-title').text(response.DetailProduct.name);
                     $('.PriceProductDetail').text(response.DetailProduct.price +" DH");
                     var description = response.DetailProduct.description;
-                    var modifiedDescription = description.replace(/"/g, '');
+
+                    if(description != null)
+                    {
+                        var modifiedDescription = description.replace(/"/g, '');
+                    }
+
 
                     $('.DescriptionProductDetail').append(modifiedDescription);
                     $('.CategoryDetail').text(response.DetailProduct.category);
@@ -170,19 +176,30 @@ $(document).ready(function () {
                     $('.img-showcase').empty();
                     $('.img-select').empty();
                      // Append main images
-                    $.each(response.imageProduct, function(index, image) {
-                        var imageUrl = PathImage+"/images/"+image.image;
+                    if(response.DetailProduct.length > 0)
+                    {
+                        $.each(response.imageProduct, function(index, image) {
+                            var imageUrl = PathImage+"/images/"+image.image;
+
+                            $('.img-showcase').append('<img src="' + imageUrl + '" alt="shoe image" class="imageDetail">');
+                        });
+
+                        // Append thumbnails
+                        $.each(response.imageProduct, function(index, image) {
+                            var imageUrl = PathImage+"/images/"+image.image;
+
+                            var dataId = index + 1;
+                            $('.img-select').append('<div class="img-item"><a href="#" data-id="' + dataId + '"><img src="' + imageUrl + '" alt="shoe image" class="imageDetail" style="min-height:200px"></a></div>');
+                        });
+                    }
+                    else
+                    {
+                        var imageUrl = PathImage+"/"+response.DetailProduct.image;
 
                         $('.img-showcase').append('<img src="' + imageUrl + '" alt="shoe image" class="imageDetail">');
-                    });
+                    }
 
-                    // Append thumbnails
-                    $.each(response.imageProduct, function(index, image) {
-                        var imageUrl = PathImage+"/images/"+image.image;
 
-                        var dataId = index + 1;
-                        $('.img-select').append('<div class="img-item"><a href="#" data-id="' + dataId + '"><img src="' + imageUrl + '" alt="shoe image" class="imageDetail" style="min-height:200px"></a></div>');
-                    });
 
                     // Reinitialize slider functionality
                     function slideImage() {

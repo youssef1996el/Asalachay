@@ -735,12 +735,12 @@
                             alt="" class="img-fluid">
                         </div>
 
-                        <a href="https://grostore.themetags.com/products?&category_id=8"
+                        <a href="{{url('products/Category/'.$item->id)}}"
                             class="text-dark fs-sm fw-bold d-block mt-3">{{$item->category_name}}</a>
                         <span  class="total-count position-relative ps-3 fs-sm fw-medium doted-primary">{{$item->product_count}}
                             Articles</span>
 
-                        <a href="https://grostore.themetags.com/products?&category_id=8"  class="explore-btn position-absolute"><i class="fa-solid fa-arrow-up"></i></a>
+                        <a href="{{url('products/Category/'.$item->id)}}"  class="explore-btn position-absolute"><i class="fa-solid fa-arrow-up"></i></a>
                     </div>
                 </div>
             @endforeach
@@ -769,8 +769,10 @@
          <!-- left column -->
 
          <div class="col-xxl-4 col-lg-6">
+
             @foreach ($Featured_Products as $key => $value)
-                @if ($key <= 4)
+                @if ($key <= 3)
+
                     <div class="mb-3">
                         <div class="horizontal-product-card d-sm-flex align-items-center p-3 bg-white rounded-2 border card-md gap-4">
                             <div class="thumbnail position-relative rounded-2">
@@ -779,8 +781,8 @@
                                         class="img-fluid"></a>
                                 <div class="product-overlay position-absolute start-0 top-0 w-100 h-100 d-flex align-items-center justify-content-center gap-1 rounded-2">
 
-                                    <a href="javascript:void(0);" class="rounded-btn fs-xs"
-                                        onclick="showProductDetailsModal(6)"><i class="fa-solid fa-eye"></i></a>
+                                    <a href="javascript:void(0);" class="rounded-btn fs-xs IconDisplayModelDetail"  value=" {{$value->id}}"
+                                        ><i class="fa-solid fa-eye"></i></a>
 
                                 </div>
                             </div>
@@ -796,14 +798,13 @@
 
                                 <form action="" class="direct-add-to-cart-form">
 
-                                    <input type="hidden" name="product_variation_id" value="6">
-                                    <input type="hidden" value="1" name="quantity">
+
 
                                     <div class="d-flex justify-content-between align-items-center mt-10">
                                         <span class="flex-grow-1">
-                                            <a href="javascript:void(0);" onclick="directAddToCartFormSubmit(this)"
-                                                class="fs-xs fw-bold d-inline-block explore-btn direct-add-to-cart-btn">
-                                                <span class="add-to-cart-text">Acheter maintenant</span>
+                                            <a href="#"
+                                                class="fs-xs fw-bold d-inline-block explore-btn direct-add-to-cart-btn BtnAddProductToCart" value="{{$value->id}}">
+                                                <span class="add-to-cart-text">Acheter maintenant </span>
                                                 <span class="ms-1">
                                                     <i class="fa-solid fa-arrow-right"></i>
                                                 </span>
@@ -834,7 +835,8 @@
 
          <div class="col-xxl-4 col-lg-6 order-2 order-xxl-3">
             @foreach ($Featured_Products as $key=>$value)
-                @if ($key > 4)
+                @if ($key >= 4)
+
                 <div class="mb-3">
                     <div class="horizontal-product-card d-sm-flex align-items-center p-3 bg-white rounded-2 border card-md gap-4">
                         <div class="thumbnail position-relative rounded-2">
@@ -843,7 +845,7 @@
                             <div
                                 class="product-overlay position-absolute start-0 top-0 w-100 h-100 d-flex align-items-center justify-content-center gap-1 rounded-2">
 
-                                <a href="javascript:void(0);" class="rounded-btn fs-xs"
+                                <a href="#" class="rounded-btn fs-xs IconDisplayModelDetail"  value="{{$value->id}}"
                                     ><i class="fa-solid fa-eye"></i></a>
 
                             </div>
@@ -864,13 +866,12 @@
 
                             <form action="" class="direct-add-to-cart-form">
 
-                                <input type="hidden" name="product_variation_id" value="{{$value->id}}">
-                                <input type="hidden" value="1" name="quantity">
+
 
                                 <div class="d-flex justify-content-between align-items-center mt-10">
                                     <span class="flex-grow-1">
-                                        <a href="javascript:void(0);"
-                                            class="fs-xs fw-bold d-inline-block explore-btn direct-add-to-cart-btn">
+                                        <a href="#"
+                                            class="fs-xs fw-bold d-inline-block explore-btn direct-add-to-cart-btn" value="{{$value->id}}">
                                             <span class="add-to-cart-text">Acheter maintenant</span>
                                             <span class="ms-1"><i class="fa-solid fa-arrow-right"></i></span>
                                         </a>
@@ -938,8 +939,8 @@
                         <div class="product-btns position-absolute d-flex gap-2 flex-column">
 
 
-                            <a href="javascript:void(0);" class="rounded-btn" onclick="showProductDetailsModal(3)"><i
-                                    class="fa-regular fa-eye"></i></a>
+                            <a href="#" class="rounded-btn IconDisplayModelDetail"  value="{{$item->id}}">
+                                <i class="fa-regular fa-eye"></i></a>
                         </div>
                     </div>
 
@@ -971,8 +972,8 @@
                             <input type="hidden" name="product_variation_id" value="3">
                             <input type="hidden" value="1" name="quantity">
 
-                            <a href="javascript:void(0);" onclick="directAddToCartFormSubmit(this)"
-                                class="btn btn-secondary d-block btn-md rounded-1 w-100 direct-add-to-cart-btn add-to-cart-text">Ajouter au panier</a>
+                            <a href="#"
+                                class="btn btn-secondary d-block btn-md rounded-1 w-100 direct-add-to-cart-btn add-to-cart-text BtnAddProductToCart" value="{{$item->id}}">Ajouter au panier</a>
                         </form>
                     </div>
                 </div>
@@ -1002,7 +1003,7 @@
              </div>
                          <div class="col-xl-4 col-md-6">
                  <a href="#" class="d-block">
-                     <img src="https://grostore.themetags.com/public/uploads/media/7tT6NXMpePFm0cBcBd3Hm4PC6lZkMcpB0XywjHf2.png" class="img-fluid" alt="" srcset="">
+                     <img src="{{asset('storage/images/slider.jpg')}}" class="img-fluid" alt="" srcset="" style="height: 188px !important">
                  </a>
              </div>
                  </div>
@@ -1015,7 +1016,7 @@
  <div class="container">
      <div class="row g-4 align-items-center justify-content-center">
          <div class="col-xxl-4 col-xl-5 order-2 order-xxl-1 d-none d-xl-block d-none-1399">
-             <a href="https://www.grostore.themetags.com/campaigns/exclusive-summer-offer-qornw">
+             <a href="#">
                  <img src="https://grostore.themetags.com/public/uploads/media/xANvWdU5lMHnp1MSSNTpnQMlqAUEMUcgl1Bu9IzB.png" alt="" class="img-fluid">
              </a>
          </div>
@@ -1059,7 +1060,7 @@
                                             class="img-fluid">
                                     </a>
                                     <div class="product-overlay position-absolute start-0 top-0 w-100 h-100 d-flex align-items-center justify-content-center gap-1 rounded-2">
-                                        <a href="javascript:void(0);" class="rounded-btn fs-xs" onclick="showProductDetailsModal(8)"><i class="fa-solid fa-eye"></i></a>
+                                        <a href="#" class="rounded-btn fs-xs IconDisplayModelDetail"  value="{{$item->id}}"><i class="fa-solid fa-eye"></i></a>
                                     </div>
                                 </div>
                                 <div class="card-content mt-4 mt-sm-0 w-100">
@@ -1080,8 +1081,8 @@
 
                                         <div class="d-flex justify-content-between align-items-center mt-10">
                                             <span class="flex-grow-1">
-                                                <a href="javascript:void(0);" onclick="directAddToCartFormSubmit(this)"
-                                                    class="fs-xs fw-bold d-inline-block explore-btn direct-add-to-cart-btn">
+                                                <a href="#"
+                                                    class="fs-xs fw-bold d-inline-block explore-btn direct-add-to-cart-btn BtnAddProductToCart" value="{{$item->id}}">
                                                     <span class="add-to-cart-text">Acheter maintenant</span>
                                                     <span class="ms-1"><i class="fa-solid fa-arrow-right"></i></span>
                                                 </a>
@@ -1168,17 +1169,17 @@
                  <div class="swiper gshop-feedback-slider mt-4">
                      <div class="swiper-wrapper">
                                                          <div class="swiper-slide feedback-single text-center">
-                                 <p class="mb-5">I want to order something (A perfume) for my mom at BD. Although the delivery area was out of their scope, their support team instantly replied to my query and manged to deliver the product. The best thing I noticed, they informed step by step updated news about the order processing.</p>
+                                 <p class="mb-5">Bonjour ! J'ai découvert votre site et je vous en suis reconnaissant. Je suis très intéressé par le monde du thé et j'apprécie parcourir les sites spécialisés dans le thé. Votre gamme variée de produits et la profondeur de votre contenu sur le thé ont attiré mon attention. Votre site semble offrir une expérience complète pour les amateurs de thé, des débutants aux experts. J'ai hâte d'explorer davantage vos produits et peut-être d'essayer quelques nouvelles variétés !</p>
                                  <span
-                                     class="clients_name text-dark fw-bold d-block mb-1">Rasmus Geisler</span>
+                                     class="clients_name text-dark fw-bold d-block mb-1">Ahmad</span>
                                  <ul class="star-rating fs-sm d-inline-flex align-items-center text-warning">
                                      <li><i class="fas fa-star"></i></li><li><i class="fas fa-star"></i></li><li><i class="fas fa-star"></i></li><li><i class="fas fa-star"></i></li><li><i class="fas fa-star"></i></li>
                                  </ul>
                              </div>
                                                          <div class="swiper-slide feedback-single text-center">
-                                 <p class="mb-5">Bought something for my mom. Although the delivery area was out of their scope, their support team instantly replied to my query and manged to deliver the product. The best thing I noticed, they informed step by step updated news about the order processing.</p>
+                                 <p class="mb-5">Bonjour ! Je viens de découvrir votre site et je suis vraiment impressionné ! En tant qu'amateur de parfum, je suis toujours à la recherche de nouvelles sources pour enrichir ma passion. Votre sélection de parfum semble vraiment exceptionnelle, et j'apprécie la manière dont vous présentez les informations sur les différentes variétés. Votre site offre une expérience agréable et instructive pour les connaisseurs comme moi. Merci pour tout le travail que vous avez investi pour rendre votre plateforme si captivante !.</p>
                                  <span
-                                     class="clients_name text-dark fw-bold d-block mb-1">Ryan Goslin</span>
+                                     class="clients_name text-dark fw-bold d-block mb-1">Ahmad</span>
                                  <ul class="star-rating fs-sm d-inline-flex align-items-center text-warning">
                                      <li><i class="fas fa-star"></i></li><li><i class="fas fa-star"></i></li><li><i class="fas fa-star"></i></li><li><i class="fas fa-star"></i></li><li><i class="fas fa-star"></i></li>
                                  </ul>
@@ -1215,8 +1216,8 @@
                                                 class="img-fluid"></a>
                                         <div class="product-overlay position-absolute start-0 top-0 w-100 h-100 d-flex align-items-center justify-content-center gap-1 rounded-2">
 
-                                            <a href="javascript:void(0);" class="rounded-btn fs-xs"
-                                                onclick="showProductDetailsModal(35)"><i class="fa-solid fa-eye"></i></a>
+                                            <a href="#" class="rounded-btn fs-xs IconDisplayModelDetail"  value="{{$item->id}}"
+                                                ><i class="fa-solid fa-eye"></i></a>
 
                                         </div>
                                     </div>
@@ -1240,8 +1241,8 @@
 
                                             <div class="d-flex justify-content-between align-items-center mt-10">
                                                 <span class="flex-grow-1">
-                                                    <a href="javascript:void(0);" onclick="directAddToCartFormSubmit(this)"
-                                                        class="fs-xs fw-bold d-inline-block explore-btn direct-add-to-cart-btn">
+                                                    <a href="#"
+                                                        class="fs-xs fw-bold d-inline-block explore-btn direct-add-to-cart-btn BtnAddProductToCart" value="{{$item->id}}" >
                                                         <span class="add-to-cart-text">Acheter maintenant</span>
                                                         <span class="ms-1"><i class="fa-solid fa-arrow-right"></i></span>
                                                         </a>
@@ -1274,8 +1275,7 @@
                                     <div
                                         class="product-overlay position-absolute start-0 top-0 w-100 h-100 d-flex align-items-center justify-content-center gap-1 rounded-2">
 
-                                        <a href="javascript:void(0);" class="rounded-btn fs-xs"
-                                            onclick="showProductDetailsModal(3)"><i class="fa-solid fa-eye"></i></a>
+                                        <a href="#" class="rounded-btn fs-xs IconDisplayModelDetail"  value="{{$item->id}}"><i class="fa-solid fa-eye"></i></a>
 
                                     </div>
                                 </div>
@@ -1297,8 +1297,8 @@
 
                                         <div class="d-flex justify-content-between align-items-center mt-10">
                                             <span class="flex-grow-1">
-                                                <a href="javascript:void(0);" onclick="directAddToCartFormSubmit(this)"
-                                                    class="fs-xs fw-bold d-inline-block explore-btn direct-add-to-cart-btn">
+                                                <a href="#"
+                                                    class="fs-xs fw-bold d-inline-block explore-btn direct-add-to-cart-btn BtnAddProductToCart" value="{{$item->id}}">
                                                     <span class="add-to-cart-text">Acheter maintenant </span>
                                                     <span class="ms-1"><i class="fa-solid fa-arrow-right"></i></span>
                                                 </a>
@@ -1321,7 +1321,7 @@
             </div>
          </div>
          <div class="col-xl-3 d-none d-xl-block">
-             <a href="https://www.grostore.themetags.com/campaigns/exclusive-summer-offer-qornw" class=""><img
+             <a href="#" class=""><img
                      src="https://grostore.themetags.com/public/uploads/media/gTeC1mAdsPlHeg3f8GM8KXBlnvwHh493IGMfFvwG.png" alt=""
                      class="img-fluid rounded-2 d-flex flex-column h-100 object-fit-cover"></a>
          </div>
@@ -1330,29 +1330,272 @@
 </section>
  <!--products listing end-->
 
+ <style>
+    .card-wrapper{
+max-width: 1100px;
+margin: 0 auto;
+}
+.imageDetail{
+width: 100%;
+display: block;
+}
+.img-display{
+overflow: hidden;
+}
+.img-showcase{
+display: flex;
+width: 100%;
+transition: all 0.5s ease;
+}
+.img-showcase img{
+min-width: 100%;
+}
+.img-select{
+display: flex;
+}
+.img-item{
+margin: 0.3rem;
+}
+.img-item:nth-child(1),
+.img-item:nth-child(2),
+.img-item:nth-child(3){
+margin-right: 0;
+}
+.img-item:hover{
+opacity: 0.8;
+}
+.product-content{
+padding: 2rem 1rem;
+}
+.product-title{
+font-size: 3rem;
+text-transform: capitalize;
+font-weight: 700;
+position: relative;
+color: #12263a;
+margin: 1rem 0;
+}
+.product-title::after{
+content: "";
+position: absolute;
+left: 0;
+bottom: 0;
+height: 4px;
+width: 80px;
+background: #12263a;
+}
+.product-link{
+text-decoration: none;
+text-transform: uppercase;
+font-weight: 400;
+font-size: 0.9rem;
+display: inline-block;
+margin-bottom: 0.5rem;
+background: #256eff;
+color: #fff;
+padding: 0 0.3rem;
+transition: all 0.5s ease;
+}
+.product-link:hover{
+opacity: 0.9;
+}
+.product-rating{
+color: #ffc107;
+}
+.product-rating span{
+font-weight: 600;
+color: #252525;
+}
+.product-price{
+margin: 1rem 0;
+font-size: 1rem;
+font-weight: 700;
+}
+.product-price span{
+font-weight: 400;
+}
+.last-price span{
+color: #f64749;
+text-decoration: line-through;
+}
+.new-price span{
+color: #256eff;
+}
+.product-detail h2{
+text-transform: capitalize;
+color: #12263a;
+padding-bottom: 0.6rem;
+}
+.product-detail p{
+font-size: 0.9rem;
+padding: 0.3rem;
+opacity: 0.8;
+}
+.product-detail ul{
+margin: 1rem 0;
+font-size: 0.9rem;
+}
+.product-detail ul li{
+margin: 0;
+list-style: none;
+background: url(shoes_images/checked.png) left center no-repeat;
+background-size: 18px;
+padding-left: 1.7rem;
+margin: 0.4rem 0;
+font-weight: 600;
+opacity: 0.9;
+}
+.product-detail ul li span{
+font-weight: 400;
+}
+.purchase-info{
+margin: 1.5rem 0;
+}
+.purchase-info input,
+.purchase-info .btn{
+border: 1.5px solid #ddd;
+border-radius: 25px;
+text-align: center;
+padding: 0.45rem 0.8rem;
+outline: 0;
+margin-right: 0.2rem;
+margin-bottom: 1rem;
+}
+.purchase-info input{
+width: 60px;
+}
+.purchase-info .btn{
+cursor: pointer;
+color: #fff;
+}
+.purchase-info .btn:first-of-type{
+background: #256eff;
+}
+.purchase-info .btn:last-of-type{
+background: #f64749;
+}
+.purchase-info .btn:hover{
+opacity: 0.9;
+}
+.social-links{
+display: flex;
+align-items: center;
+}
+.social-links a{
+display: flex;
+align-items: center;
+justify-content: center;
+width: 32px;
+height: 32px;
+color: #000;
+border: 1px solid #000;
+margin: 0 0.2rem;
+border-radius: 50%;
+text-decoration: none;
+font-size: 0.8rem;
+transition: all 0.5s ease;
+}
+.social-links a:hover{
+background: #000;
+border-color: transparent;
+color: #fff;
+}
 
+@media screen and (min-width: 992px){
+.card{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.5rem;
+}
+.card-wrapper{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.product-imgs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.product-content{
+    padding-top: 0;
+}
+}
+</style>
 
 
      <!-- modals -->
      <div class="modal fade" id="quickview_modal">
- <div class="modal-dialog modal-dialog-centered">
-     <div class="modal-content min-h-400">
-         <div class="modal-body h-100 bg-white">
-             <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content min-h-400">
+                <div class="modal-body h-100 bg-white">
+                    <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class = "card-wrapper">
+                        <div class = "card">
+                          <!-- card left -->
+                            <div class = "product-imgs">
+                                <div class = "img-display">
+                                    <div class = "img-showcase">
 
-             <div class="data-preloader-wrapper d-flex align-items-center justify-content-center min-h-400">
-                 <div class="" role="status">
-                     <span class="sr-only"></span>
-                 </div>
-             </div>
+                                    </div>
+                                </div>
+                                <div class = "img-select">
 
-             <div class="product-info">
+                                </div>
+                            </div>
 
-             </div>
-         </div>
-     </div>
- </div>
-</div>
+                        <div class = "product-content" style="background: #fff">
+                            <h2 class = "product-title"></h2>
+
+                            <div class = "product-rating">
+                                <i class = "fas fa-star"></i>
+                                <i class = "fas fa-star"></i>
+                                <i class = "fas fa-star"></i>
+                                <i class = "fas fa-star"></i>
+                                <i class = "fas fa-star-half-alt"></i>
+                                <span>4.7(21)</span>
+                            </div>
+
+                            <div class = "product-price">
+                                <p class = "new-price">Prix: <span class="PriceProductDetail"></span></p>
+                            </div>
+
+                            <div class = "product-detail">
+                                <h2 class="DescriptionProductDetail">à propos de cet article: </h2>
+                                <ul>
+                                    <li>
+                                        <i class="fa-solid fa-check me-3"></i>Catégories: <span class="CategoryDetail"></span>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-check me-3"></i>Marque: <span class="MarqueDetail"></span>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-check me-3"></i>Disponible: <span class="QteDetail"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="d-flex align-items-center gap-3 flex-wrap mt-5">
+                                <div class="product-qty qty-increase-decrease d-flex align-items-center">
+                                    <button type="button" class="decrease">-</button>
+                                    <input type="text" readonly="" value="1" name="quantity" min="1" max="195" class="QuantityDetail">
+                                    <button type="button" class="increase">+</button>
+                                </div>
+
+                                <button type="submit" class="btn btn-secondary btn-md add-to-cart-btn BtnAddProductToCart" >
+                                    <span class="me-2">
+                                        <i class="fa-solid fa-bag-shopping"></i>
+                                    </span>
+                                    <span class="add-to-cart-text" _msttexthash="291005" _msthash="353"> Ajouter au panier </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
      <!-- modals -->
 
 
@@ -1979,22 +2222,11 @@
      <!--endbuild-->
 
      <!--page's scripts-->
-         <script>
-     "use strict";
 
-
- </script>
      <!--page's script-->
 
      <!--for pwa-->
-     <script src="https://grostore.themetags.com/public/sw.js"></script>
-     <script>
-         if (!navigator.serviceWorker?.controller) {
-             navigator.serviceWorker?.register("./public/sw.js").then(function(reg) {
-                 // console.log("Service worker has been registered for scope: " + reg.scope);
-             });
-         }
-     </script>
+
      <!--for pwa-->
 
      </body>

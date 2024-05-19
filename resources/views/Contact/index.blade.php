@@ -304,7 +304,7 @@
                                             fill="#5D6374" />
                                     </svg>
                                     <span
-                                        class="cart-counter badge bg-primary rounded-circle p-0 ">5</span>
+                                        class="cart-counter badge bg-primary rounded-circle p-0 "></span>
                                 </button>
                                 <div class="cart-box-wrapper">
                                     <div class="apt_cart_box theme-scrollbar">
@@ -352,7 +352,7 @@
                                                             class="fa-solid fa-shopping-bag"></i></span>Voir le panier</a>
                                             </div>
                                             <div class="col-6">
-                                                <a href="https://grostore.themetags.com/checkout"
+                                                <a href="{{url('checkout')}}"
                                                     class="btn btn-primary btn-md mt-4 w-100"><span class="me-2"><i
                                                             class="fa-solid fa-credit-card"></i></span>Caisses</a>
                                             </div>
@@ -428,87 +428,70 @@
 
         <!--offcanvas menu start-->
         <div class="offcanvas_menu position-fixed">
-    <div class="tt-short-info d-none d-md-none d-lg-none d-xl-block">
-        <button class="offcanvas-close"><i class="fa-solid fa-xmark"></i></button>
-        <a href="https://grostore.themetags.com" class="logo-wrapper d-inline-block mb-5"><img
-                src="https://grostore.themetags.com/public/uploads/media/0vDgRJLm6biMs5zCaVAze5RFwEwcTF4kSuHsZ9OT.png" alt="logo"></a>
-        <div class="offcanvas-content">
-            <h4 class="mb-4">About Us</h4>
-            <p>Explain to you how all this mistaken denouncing pleasure and praising pain was born and we will give you a complete account of the system, and expound the actual teachings.
+            <div class="tt-short-info d-none d-md-none d-lg-none d-xl-block">
+            <button class="offcanvas-close"><i class="fa-solid fa-xmark"></i></button>
+            <a href="{{url('/')}}" class="logo-wrapper d-inline-block mb-5"><img
+                    src="https://grostore.themetags.com/public/uploads/media/0vDgRJLm6biMs5zCaVAze5RFwEwcTF4kSuHsZ9OT.png" alt="logo"></a>
+            <div class="offcanvas-content">
+                <h4 class="mb-4">À propos de nous</h4>
+                <p>Explain to you how all this mistaken denouncing pleasure and praising pain was born and we will give you a complete account of the system, and expound the actual teachings.
 
-          Mistaken denouncing pleasure and praising pain was born and we will give you complete account of the system expound.</p>
-            <a href="https://grostore.themetags.com/pages/about-us" class="btn btn-primary mt-4">About Us</a>
+              Mistaken denouncing pleasure and praising pain was born and we will give you complete account of the system expound.</p>
+                <a href="{{url('About')}}" class="btn btn-primary mt-4">À propos de nous</a>
+            </div>
+        </div>
+
+        <div class="mobile-menu d-md-block d-lg-block d-xl-none mb-4">
+            <button class="offcanvas-close"><i class="fa-solid fa-xmark"></i></button>
+
+            <nav class="mobile-menu-wrapperoffcanvas-contact">
+                <ul>
+
+                    <li>
+                        <a href="{{url('/')}}">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="{{url('List/Products')}}">Produits</a>
+                    </li>
+                    <li><a href="{{url('About')}}">À propos de nous</a></li>
+
+                    <li><a  href="{{url('Contact')}}">Contactez-nous</a></li>
+
+                        <li>
+                        <a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <span class="me-2">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            </span>{{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+
+                        </li>
+                </ul>
+            </nav>
+
+        </div>
+
+        <div class="offcanvas-contact mt-4">
+            <h5 class="mb-4 mt-5">Contact Info</h5>
+            <address>
+                {{$Infos->address}} <br>
+                <a href="tel:{{$Infos->phone}}">{{$Infos->phone}}</a> <br>
+                <a href="mailto:{{$Infos->email}}">{{$Infos->email}}</a>
+            </address>
+        </div>
+        <div class="offcanvas-contact social-contact mt-4">
+            <a href="https://www.facebook.com/" target="_blank" class="social-btn"><i
+                    class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/" target="_blank" class="social-btn"><i
+                    class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank" class="social-btn"><i
+                    class="fab fa-linkedin"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" class="social-btn"><i
+                    class="fab fa-youtube"></i></a>
         </div>
     </div>
-
-    <div class="mobile-menu d-md-block d-lg-block d-xl-none mb-4">
-        <button class="offcanvas-close"><i class="fa-solid fa-xmark"></i></button>
-
-        <nav class="mobile-menu-wrapperoffcanvas-contact">
-            <ul>
-
-                <li><a href="{{url('/')}}">Accueil</a></li>
-                <li><a href="{{url('List/Products')}}">Produits</a></li>
-                    <li>
-                        <a href="https://grostore.themetags.com/campaigns">Campaigns</a>
-                    </li>
-                    <li>
-                        <a href="https://grostore.themetags.com/coupons">Coupons</a>
-                    </li>
-
-
-
-
-
-                                    <li class="has-submenu">
-                        <a href="javascript:void(0)">Pages<span class="ms-1 fs-xs float-end"><i
-                                    class="fa-solid fa-angle-right"></i></span></a>
-                        <ul>
-
-                            <li><a href="https://grostore.themetags.com/blogs">Blogs</a></li>
-                            <li><a href="https://grostore.themetags.com/pages/about-us">About Us</a></li>
-                            <li><a  href="{{url('Contact')}}">Contact Us</a></li>
-                                                            <li><a
-                                        href="https://grostore.themetags.com/pages/terms-conditions">Terms &amp; Conditions</a>
-                                </li>
-                                                    </ul>
-                    </li>
-
-
-
-
-
-
-
-
-
-                                    <li>
-                        <a href="https://grostore.themetags.com/logout">Sign out</a>
-                    </li>
-                                            </ul>
-        </nav>
-
-    </div>
-
-    <div class="offcanvas-contact mt-4">
-        <h5 class="mb-4 mt-5">Contact Info</h5>
-        <address>
-            {{$Infos->address}} <br>
-            <a href="tel:{{$Infos->phone}}">{{$Infos->phone}}</a> <br>
-            <a href="mailto:{{$Infos->email}}">{{$Infos->email}}</a>
-        </address>
-    </div>
-    <div class="offcanvas-contact social-contact mt-4">
-        <a href="https://www.facebook.com/" target="_blank" class="social-btn"><i
-                class="fab fa-facebook-f"></i></a>
-        <a href="https://twitter.com/" target="_blank" class="social-btn"><i
-                class="fab fa-twitter"></i></a>
-        <a href="https://www.linkedin.com/" target="_blank" class="social-btn"><i
-                class="fab fa-linkedin"></i></a>
-        <a href="https://www.youtube.com/" target="_blank" class="social-btn"><i
-                class="fab fa-youtube"></i></a>
-    </div>
-</div>
         <!--offcanvas menu end-->
 
             <!--breadcrumb-->

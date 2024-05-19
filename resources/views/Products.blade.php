@@ -674,11 +674,9 @@
                                             <span class="fw-bold h4 text-danger">{{$item->price}} DH</span>
                                         </h6>
                                         <form action="" class="direct-add-to-cart-form">
-                                            <input type="hidden" name="_token" value="oZYKJTcUpo0VZZrS1F9qkMhBT0npzHg1bLcleeBN">
-                                            <input type="hidden" name="product_variation_id" value="47">
-                                            <input type="hidden" value="1" name="quantity">
 
-                                            <a href="#" class="btn btn-outline-secondary btn-md border-secondary d-block mt-4 w-100 direct-add-to-cart-btn add-to-cart-text BtnAddProductToCart" value="{{$item->id}}">Ajouter au panier</a>
+
+                                            <a href="#" class="btn btn-outline-secondary btn-md border-secondary d-block mt-4 w-100 direct-add-to-cart-btn add-to-cart-text BtnAddProductToCart" value="{{$item->id}}">Ajouter au panier </a>
                                         </form>
                                     </div>
                                 </div>
@@ -975,36 +973,10 @@
                                         </span>
                                         <span class="add-to-cart-text" _msttexthash="291005" _msthash="353"> Ajouter au panier </span>
                                     </button>
-
-
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
-                    {{-- <script>
-                        // Reinitialize slider functionality
-                        const imgs = document.querySelectorAll('.img-select a');
-                        const imgBtns = [...imgs];
-                        let imgId = 1;
-
-                        imgBtns.forEach((imgItem) => {
-                            imgItem.addEventListener('click', (event) => {
-                                event.preventDefault();
-                                imgId = imgItem.dataset.id;
-                                slideImage();
-                            });
-                        });
-
-                        function slideImage() {
-                            const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
-
-                            document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
-                        }
-
-                        window.addEventListener('resize', slideImage);
-                    </script> --}}
                     </div>
                 </div>
             </div>

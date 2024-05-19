@@ -345,11 +345,12 @@ class ProductController extends Controller
             ->join('stocks', 'products.id', '=', 'stocks.idproduct')
             ->select('products.*', 'category.name as category', 'marques.name as marque_name', 'stocks.qte')
             ->paginate(9);
-        $categories = DB::table('category')
-            ->select('category.name as category_name', 'category.id', DB::raw('count(products.id) as product_count'), 'products.id as product_id')
-            ->leftJoin('products', 'category.id', '=', 'products.idcategory')
-            ->groupBy('category.id')
-            ->get();
+            $categories = DB::select("
+            SELECT category.name as category_name, category.id as id, COUNT(products.id) as product_count
+            FROM category
+            LEFT JOIN products ON category.id = products.idcategory
+            GROUP BY category.id
+        ");
 
         $checkContentForData = false;
         // Execute the getmac command
@@ -374,6 +375,7 @@ class ProductController extends Controller
             $checkContentForData = true;
         }
         $Infos = Infos::first();
+
         return view('Products')
 
         ->with('listProduct',$Products)
@@ -392,6 +394,7 @@ class ProductController extends Controller
         {
 
             $checkProductHasStock = Stocks::where('idproduct',$request->idproduct)->select('qte')->first();
+
             if($checkProductHasStock->qte <=0)
             {
                 return response()->json([

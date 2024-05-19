@@ -97,9 +97,10 @@ class HomeController extends Controller
             $Featured_Products = DB::table('products as p')
             ->join('stocks as s','s.idproduct','=','p.id')
             ->join('marques as m','m.id','=','p.idmarque')
-            ->select('p.name','p.image','p.price','s.qte','m.name as namemarque')
+            ->select('p.name','p.image','p.price','s.qte','m.name as namemarque','p.id')
             ->where('p.featured','=','true')
             ->get();
+            //dd($Featured_Products);
 
             $Trending_Products = DB::table('products as p')
             ->join('stocks as s','s.idproduct','=','p.id')
@@ -112,21 +113,21 @@ class HomeController extends Controller
             $Best_Deals = DB::table('products as p')
             ->join('stocks as s','s.idproduct','=','p.id')
             ->join('marques as m','m.id','=','p.idmarque')
-            ->select('p.name','p.image','p.price','s.qte','m.name as namemarque')
+            ->select('p.name','p.image','p.price','s.qte','m.name as namemarque','p.id')
             ->where('p.bestdeals','=','true')
             ->get();
 
             $New_Products = DB::table('products as p')
             ->join('stocks as s','s.idproduct','=','p.id')
             ->join('marques as m','m.id','=','p.idmarque')
-            ->select('p.name','p.image','p.price','s.qte','m.name as namemarque')
+            ->select('p.name','p.image','p.price','s.qte','m.name as namemarque','p.id')
             ->where('p.newproduct','=','true')
             ->get();
 
             $Best_Selling = DB::table('products as p')
             ->join('stocks as s','s.idproduct','=','p.id')
             ->join('marques as m','m.id','=','p.idmarque')
-            ->select('p.name','p.image','p.price','s.qte','m.name as namemarque')
+            ->select('p.name','p.image','p.price','s.qte','m.name as namemarque' ,'p.id')
             ->where('p.bestselling','=','true')
             ->get();
 
@@ -215,11 +216,12 @@ class HomeController extends Controller
 
     public function Contact()
     {
-        $categories = Category::select('category.name as category_name','category.id as id')
-        ->leftJoin('products', 'category.id', '=', 'products.idcategory')
-        ->selectRaw('count(products.id) as product_count')
-        ->groupBy('category.id')
-        ->get();
+        $categories = DB::select("
+        SELECT category.name as category_name, category.id as id, COUNT(products.id) as product_count
+        FROM category
+        LEFT JOIN products ON category.id = products.idcategory
+        GROUP BY category.id
+    ");
         $Infos = Infos::first();
         return view('Contact.index')
         ->with('Infos',$Infos)
@@ -460,11 +462,12 @@ class HomeController extends Controller
     public function About()
     {
         $Infos = Infos::first();
-        $categories = Category::select('category.name as category_name','category.id as id')
-        ->leftJoin('products', 'category.id', '=', 'products.idcategory')
-        ->selectRaw('count(products.id) as product_count')
-        ->groupBy('category.id')
-        ->get();
+        $categories = DB::select("
+        SELECT category.name as category_name, category.id as id, COUNT(products.id) as product_count
+        FROM category
+        LEFT JOIN products ON category.id = products.idcategory
+        GROUP BY category.id
+    ");
         return view('About.index')
 
         ->with('Infos', $Infos)

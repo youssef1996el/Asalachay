@@ -28,7 +28,8 @@ $(document).ready(function () {
                     "1": "1 ligne sélectionnée"
                 }
             }
-        }
+        },
+        pageLength: 200
     });
 
     var idProduct ='';
@@ -103,11 +104,14 @@ $(document).ready(function () {
                 }
                 else if(response.status == 404)
                 {
+
+                    //$(this).removeAttr('checked');
                     $.notify(response.message, {
                         position: "bottom right",
                         className: "error",
                         autoHideDelay: 5000
                     });
+
                 }
             }
         });

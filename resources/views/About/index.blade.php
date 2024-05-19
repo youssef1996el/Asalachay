@@ -327,7 +327,7 @@
                                             fill="#5D6374" />
                                     </svg>
                                     <span
-                                        class="cart-counter badge bg-primary rounded-circle p-0 ">5</span>
+                                        class="cart-counter badge bg-primary rounded-circle p-0 "></span>
                                 </button>
                                 <div class="cart-box-wrapper">
                                     <div class="apt_cart_box theme-scrollbar">
@@ -363,21 +363,21 @@
                                             </li>
                                         </ul>
                                         <div class="d-flex align-items-center justify-content-between mt-3">
-                                            <h6 class="mb-0">Subtotal:</h6>
+                                            <h6 class="mb-0">Total:</h6>
                                             <span
-                                                class="fw-semibold text-secondary sub-total-price">₹12,520.00</span>
+                                                class="fw-semibold text-secondary sub-total-price"></span>
                                         </div>
                                         <div class="row align-items-center justify-content-between">
                                             <div class="col-6">
-                                                <a href="https://grostore.themetags.com/carts"
+                                                <a href="{{url('Cart')}}"
                                                     class="btn btn-secondary btn-md mt-4 w-100"><span
                                                         class="me-2"><i
-                                                            class="fa-solid fa-shopping-bag"></i></span>View Cart</a>
+                                                            class="fa-solid fa-shopping-bag"></i></span>Voir le panier</a>
                                             </div>
                                             <div class="col-6">
-                                                <a href="https://grostore.themetags.com/checkout"
+                                                <a href="{{url('checkout')}}"
                                                     class="btn btn-primary btn-md mt-4 w-100"><span class="me-2"><i
-                                                            class="fa-solid fa-credit-card"></i></span>Checkout</a>
+                                                            class="fa-solid fa-credit-card"></i></span>Caisses</a>
                                             </div>
 
 
