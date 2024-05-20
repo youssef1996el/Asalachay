@@ -49,8 +49,8 @@
         <div class="tt-brand">
             <a href="{{url('/')}}"
                 class="tt-brand-link">
-                <img src="https://grostore.themetags.com/public/uploads/media/yqqPV512Gk5DMpvCj2UllKrCl52bam3yD6QvfiPP.png" class="tt-brand-favicon ms-1" alt="favicon" />
-                <img src="https://grostore.themetags.com/public/uploads/media/LOa3BqX3ydhVC0V1fwYEyvEpM5N9NaoA0E7u3EQs.png" class="tt-brand-logo ms-2" alt="logo" />
+                <img src="{{asset('storage/images/logo.png')}}" class="tt-brand-favicon ms-1" alt="favicon" />
+                <img src="{{asset('storage/images/logo.png')}}" class="tt-brand-logo ms-2" alt="logo" />
             </a>
             <a href="javascript:void(0);" class="tt-toggle-sidebar">
                 <span><i data-feather="chevron-left"></i></span>
@@ -315,9 +315,9 @@
     <div class="offcanvas-header border-bottom">
         <div class="tt-brand">
             <a href="index.html" class="tt-brand-link">
-                <img src="https://grostore.themetags.com/public/uploads/media/yqqPV512Gk5DMpvCj2UllKrCl52bam3yD6QvfiPP.png" class="tt-brand-favicon ms-1"
+                <img src="{{asset('storage/images/logo.png')}}" class="tt-brand-favicon ms-1"
                     alt="favicon" />
-                <img src="https://grostore.themetags.com/public/uploads/media/LOa3BqX3ydhVC0V1fwYEyvEpM5N9NaoA0E7u3EQs.png" class="tt-brand-logo ms-2"
+                <img src="{{asset('storage/images/logo.png')}}" class="tt-brand-logo ms-2"
                     alt="logo" />
             </a>
         </div>

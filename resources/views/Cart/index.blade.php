@@ -205,8 +205,8 @@
         <div class="gshop-navbar bg-white rounded ps-lg-5 position-relative">
             <div class="row align-items-center">
                 <div class="col-xxl-2 col-xl-3 col-md-3 col-5">
-                    <a href="https://grostore.themetags.com" class="logo"><img
-                            src="https://grostore.themetags.com/public/uploads/media/0vDgRJLm6biMs5zCaVAze5RFwEwcTF4kSuHsZ9OT.png" alt="logo" class="img-fluid"></a>
+                    <a href="{{url('/')}}" class="logo"><img
+                            src="{{asset('storage/images/logo.png')}}" alt="logo" class="img-fluid"></a>
                 </div>
                 <div class="col-xxl-10 col-xl-9 col-md-9 col-7">
                     <div class="gshop-navbar-right d-flex align-items-center justify-content-end position-relative">
@@ -453,8 +453,8 @@
         <div class="offcanvas_menu position-fixed">
             <div class="tt-short-info d-none d-md-none d-lg-none d-xl-block">
                 <button class="offcanvas-close"><i class="fa-solid fa-xmark"></i></button>
-                <a href="https://grostore.themetags.com" class="logo-wrapper d-inline-block mb-5"><img
-                        src="https://grostore.themetags.com/public/uploads/media/0vDgRJLm6biMs5zCaVAze5RFwEwcTF4kSuHsZ9OT.png" alt="logo"></a>
+                <a href="{{url('/')}}" class="logo-wrapper d-inline-block mb-5"><img
+                        src="{{asset('storage/images/logo.png')}}" alt="logo"></a>
                 <div class="offcanvas-content">
                     <h4 class="mb-4">À propos de nous</h4>
                     <p>Explain to you how all this mistaken denouncing pleasure and praising pain was born and we will give you a complete account of the system, and expound the actual teachings.
@@ -766,7 +766,7 @@
                <div class="mobile-menu">
                    <button class="offcanvas-close"><i class="fa-solid fa-xmark"></i></button>
                        <a href="{{url('/')}}" class="d-inline-block mb-5"><img
-                           src="https://grostore.themetags.com/public/uploads/media/0vDgRJLm6biMs5zCaVAze5RFwEwcTF4kSuHsZ9OT.png" alt="logo"></a>
+                           src="{{asset('storage/images/logo.png')}}" alt="logo"></a>
                        <nav class="mobile-menu-wrapper scrollbar">
                            <ul>
                                @foreach ($categories as $item)
@@ -774,7 +774,7 @@
                                    <a href="{{url('products/Category/'.$item->id)}}"
                                        class="d-flex align-items-center">
                                        <div class="me-2 avatar-icon">
-                                           <img src="https://grostore.themetags.com/public/uploads/media/OfNXzapZlaGqPdd3IcLP4D4bp8BkwDEjlRGhGbfh.png"
+                                           <img src="{{asset('storage/images/logo.png')}}"
                                            alt="" class="rounded-circle h-100 w-100">
                                        </div>
                                        <span>{{$item->category_name}}</span>

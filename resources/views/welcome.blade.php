@@ -342,7 +342,7 @@
          <div class="row align-items-center">
              <div class="col-xxl-2 col-xl-3 col-md-3 col-5">
                  <a href="{{url('/')}}" class="logo"><img
-                         src="https://grostore.themetags.com/public/uploads/media/0vDgRJLm6biMs5zCaVAze5RFwEwcTF4kSuHsZ9OT.png" alt="logo" class="img-fluid"></a>
+                         src="{{asset('storage/images/logo.png')}}" alt="logo" class="img-fluid"></a>
              </div>
              <div class="col-xxl-10 col-xl-9 col-md-9 col-7">
                  <div class="gshop-navbar-right d-flex align-items-center justify-content-end position-relative">
@@ -563,7 +563,7 @@
  <div class="tt-short-info d-none d-md-none d-lg-none d-xl-block">
      <button class="offcanvas-close"><i class="fa-solid fa-xmark"></i></button>
      <a href="{{url('/')}}" class="logo-wrapper d-inline-block mb-5"><img
-             src="https://grostore.themetags.com/public/uploads/media/0vDgRJLm6biMs5zCaVAze5RFwEwcTF4kSuHsZ9OT.png" alt="logo"></a>
+             src="{{asset('storage/images/logo.png')}}" alt="logo"></a>
      <div class="offcanvas-content">
          <h4 class="mb-4">À propos de nous</h4>
          <p>Explain to you how all this mistaken denouncing pleasure and praising pain was born and we will give you a complete account of the system, and expound the actual teachings.
@@ -1712,7 +1712,7 @@ color: #fff;
     <div class="mobile-menu">
         <button class="offcanvas-close"><i class="fa-solid fa-xmark"></i></button>
             <a href="{{url('/')}}" class="d-inline-block mb-5"><img
-                src="https://grostore.themetags.com/public/uploads/media/0vDgRJLm6biMs5zCaVAze5RFwEwcTF4kSuHsZ9OT.png" alt="logo"></a>
+                src="{{asset('storage/images/logo.png')}}" alt="logo"></a>
             <nav class="mobile-menu-wrapper scrollbar">
                 <ul>
                     @foreach ($categories as $item)
