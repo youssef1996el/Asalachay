@@ -22,14 +22,20 @@
             </div>
         </div>
 
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <div class="row mb-4 g-4">
 
             <!--left sidebar-->
             <div class="col-xl-9 order-2 order-md-2 order-lg-2 order-xl-1">
-                <form action="{{url('UpdateProduct')}}" method="POST" class="pb-650" >
+                <form action="{{url('UpdateProduct')}}" method="POST" class="pb-650" enctype="multipart/form-data">
                     @csrf
 
-
+                    <input type="hidden" name="idProduct" value="{{$products->id}}">
                     <!--basic information start-->
                     <div class="card mb-4" id="section-1">
                         <div class="card-body">
@@ -190,7 +196,7 @@
 
 
                                 </div>
-                                <div class="mb-4">
+                                {{-- <div class="mb-4">
                                     <label class="form-label">Galerie</label>
                                     <div class="tt-image-drop rounded">
                                         <span class="fw-semibold">Choisissez les images de la galerie</span>
@@ -237,7 +243,7 @@
 
 
 
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <!--product image and gallery end-->
@@ -251,7 +257,7 @@
                                 <h5 class="mb-4">Catégories de produits <span
                                     class="text-danger">*</span></h5>
                                 <div class="mb-4">
-                                    <select class="select2 form-select">
+                                    <select class="select2 form-select" name="category">
                                         <option value="{{$products->idcategory}}" selected>{{$products->namecategory}}</option>
                                         @foreach ($category as $item)
                                             @if ($item->id != $products->idcategory)
@@ -268,11 +274,11 @@
 
                         <!--product tag start-->
 
-                        <div class="card mb-4" id="section-4">
+                        <div class="card mb-4" id="section-3">
                             <div class="card-body">
                                 <h5 class="mb-4">Marques de produits</h5>
                                 <div class="mb-4">
-                                    <select class="select2 form-select" >
+                                    <select class="select2 form-select" name="marque">
                                         <option value="{{$products->idmarque}}" selected>{{$products->namemarque}}</option>
                                         @foreach ($Marques as $item)
                                             @if ($item->id != $products->idmarque)
@@ -286,7 +292,7 @@
 
 
                         <!--product price sku and stock start-->
-                        <div class="card mb-4" id="section-5">
+                        <div class="card mb-4" id="section-4">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <h5 class="mb-4">Prix,  Stock
@@ -369,15 +375,13 @@
                                         <a href="#section-2">Produits Images</a>
                                     </li>
                                     <li>
-                                        <a href="#section-3">Catégorie</a>
+                                        <a href="#section-3">Catégorie / Marque</a>
                                     </li>
 
                                     <li>
-                                        <a href="#section-4">Marque</a>
+                                        <a href="#section-4">Prix  &amp; stock</a>
                                     </li>
-                                    <li>
-                                        <a href="#section-5">Prix  &amp; stock</a>
-                                    </li>
+
 
                                 </ul>
                         </div>
@@ -399,7 +403,7 @@
 
 
 </script>
-<iframe src="https://www.google.com" frameborder="0"></iframe>
+
 
 
 

@@ -610,7 +610,69 @@ class ProductController extends Controller
     {
         try
         {
-            dd($request->all());
+
+
+            if($request->file == null)
+            {
+                $updateproduct= Products::where('id',$request->idProduct)->update([
+                    'name'                  => $request->name,
+                    'description'           => $request->short_description,
+                    'idcategory'            => $request->category,
+                    'idmarque'              => $request->marque,
+                    'price'                 => $request->price,
+                ]);
+
+                $updateStock        = Stocks::where('idproduct',$request->idProduct)->update([
+                    'qte'      => $request->stock
+                ]);
+
+
+                return redirect()->back()->with('success', ' mettre à jour avec succès.');
+            }
+            else
+            {
+
+                $getNameImage = Products::where('id', $request->idProduct)->select('image')->first();
+
+                $image_product = null; // Initialize the image variable
+
+                if (!is_null($getNameImage)) {
+                    $imagePath = $getNameImage->image;
+                }
+
+                if (!is_null($imagePath) && Storage::disk('public')->exists($imagePath)) {
+                    Storage::disk('public')->delete($imagePath);
+                }
+
+                // Upload new image if provided
+                if ($request->hasFile('file')) {
+
+
+                    $imagePath = $request->file('file')->store('images', 'public');
+                    $image_product = basename($imagePath);
+
+                }
+
+                Products::where('id', $request->idProduct)->update([
+                    'name' => $request->name,
+                    'description' => $request->short_description,
+                    'idcategory' => $request->category,
+                    'idmarque' => $request->marque,
+                    'price' => $request->price,
+                    'image' => "images/".$image_product,
+                ]);
+                $updateStock        = Stocks::where('idproduct',$request->idProduct)->update([
+                    'qte'      => $request->stock
+                ]);
+
+                return redirect()->back()->with('success', ' mettre à jour avec succès.');
+
+
+
+
+
+            }
+
         } catch (\Throwable $th) {
             //throw $th;
         }

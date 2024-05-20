@@ -54,7 +54,7 @@
                                             <h6 class="mb-1 flex-shrink-0">Description</h6>
                                             <span class="hr-line w-100 position-relative d-block align-self-end ms-1"></span>
                                         </div>
-                                        <p class="mb-3">{{$product->description}}</p>
+                                        <p class="mb-3">@php echo $product->description @endphp</p>
 
                                         <div class="widget-title d-flex mt-4">
                                             <h6 class="mb-1 flex-shrink-0">Catégorie</h6>

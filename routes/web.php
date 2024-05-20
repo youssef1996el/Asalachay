@@ -23,15 +23,27 @@ use App\Http\Controllers\ClientController;
 {
     return view('welcome');
 }); */
+Route::group(['middleware' => ['web','auth']], function ()
+{
+    Route::get('Dashboard',[HomeController::class,'Dashboard'])->name('Dashboard');
+    Route::get('Product/index'      ,[ProductController::class,'index']);
+    Route::get('Product/AddProduct' ,[ProductController::class,'AddProduct']);
+    Route::get('Category/index'     ,[CategoryController::class,'index']);
+    Route::get('Order/index'        ,[OrderController::class,'index']);
+    Route::get('Customer'                 ,[ClientController::class,'index']);
+    Route::get('Setting'                  ,[InfoController::class,'index']);
+    Route::get('Account'                   ,[HomeController::class,'Account']);
+    Route::get('Product/Detail/{id}',[ProductController::class,'ProductDetail']);
+});
 Route::get('/',[HomeController::class,'welcome']);
-Route::get('Dashboard',[HomeController::class,'Dashboard'])->name('Dashboard');
+
 
 
 
 
 Route::get('Brand',[BrandController::class,'index']);
 
-Route::get('Category/index'     ,[CategoryController::class,'index']);
+
 Route::get('FetchCategory'      ,[CategoryController::class,'FetchCategory']);
 Route::post('Store'             ,[CategoryController::class,'Store']);
 Route::post('Store/Category'    ,[CategoryController::class,'Store']);
@@ -40,13 +52,13 @@ Route::post('Delete'            ,[CategoryController::class,'Delete'])->name('De
 
 
 
-Route::get('Product/index'      ,[ProductController::class,'index']);
-Route::get('Product/AddProduct' ,[ProductController::class,'AddProduct']);
+
+
 Route::post('Store/Product'     ,[ProductController::class,'Store']);
 Route::get('Product/Edit/{id}'  ,[ProductController::class,'Edit']);
 Route::get('Delete/Images/Product',[ProductController::class,'DeleteImages']);
 Route::get('DeleteProduct'      ,[ProductController::class,'DeleteProduct']);
-Route::get('Product/Detail/{id}',[ProductController::class,'ProductDetail']);
+
 Route::get('StatusFeatured'     ,[ProductController::class,'StatusFeatured']);
 Route::get('StatusTrading'     ,[ProductController::class,'StatusTrading']);
 Route::get('Statusbestdeals'     ,[ProductController::class,'Statusbestdeals']);
@@ -58,7 +70,7 @@ Route::get('FetchMarque'        ,[MarqueController::class,'FetchMarque']);
 Route::post('Store'             ,[MarqueController::class,'Store'])->name('Store.marque');
 
 
-Route::get('Order/index'        ,[OrderController::class,'index']);
+
 Route::get('Livre/Order/{id}'       ,[OrderController::class,'Livre']);
 Route::get('Traitement/Order/{id}'   ,[OrderController::class,'Traitement']);
 
@@ -77,7 +89,7 @@ Route::get('DeleteCart'           ,[ProductController::class,'DeleteCart']);
 Route::get('DetailProduct'           ,[ProductController::class,'DetailProduct']);
 Route::get('filterByPrice'           ,[ProductController::class,'filterByPrice']);
 
-Route::get('Setting'                  ,[InfoController::class,'index']);
+
 
 Route::post('UpdateSetting'           ,[InfoController::class,'UpdateSetting']);
 
@@ -90,10 +102,10 @@ Route::get('getMyCartePageCarte'    ,[HomeController::class,'getMyCartePageCarte
 Route::get('checkout'                   ,[OrderController::class,'checkout']);
 Route::post('PostCheckout'              ,[OrderController::class,'PostCheckout']);
 Route::get('Detail/Order/{id}'          ,[HomeController::class,'Detail']);
-Route::get('Account'                   ,[HomeController::class,'Account']);
+
 Route::get('About'                   ,[HomeController::class,'About']);
 Route::post('UpdateAdmin'                   ,[HomeController::class,'UpdateAdmin']);
 
 
-Route::get('Customer'                 ,[ClientController::class,'index']);
+
 
