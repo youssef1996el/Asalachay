@@ -50,7 +50,7 @@
             <a href="{{url('/')}}"
                 class="tt-brand-link">
                 <img src="{{asset('storage/images/logo.png')}}" class="tt-brand-favicon ms-1" alt="favicon" />
-                <img src="{{asset('storage/images/logo.png')}}" class="tt-brand-logo ms-2" alt="logo" />
+                {{-- <img src="{{asset('storage/images/logo.png')}}" class="tt-brand-logo ms-2" alt="logo" /> --}}
             </a>
             <a href="javascript:void(0);" class="tt-toggle-sidebar">
                 <span><i data-feather="chevron-left"></i></span>
@@ -317,8 +317,8 @@
             <a href="index.html" class="tt-brand-link">
                 <img src="{{asset('storage/images/logo.png')}}" class="tt-brand-favicon ms-1"
                     alt="favicon" />
-                <img src="{{asset('storage/images/logo.png')}}" class="tt-brand-logo ms-2"
-                    alt="logo" />
+                {{-- <img src="{{asset('storage/images/logo.png')}}" class="tt-brand-logo ms-2"
+                    alt="logo" /> --}}
             </a>
         </div>
         <button class="btn-close" type="button" data-bs-dismiss="offcanvas"></button>
