@@ -33,6 +33,20 @@ class ProductController extends Controller
 
         try
         {
+
+            if (!$request->hasFile('file')) {
+                return redirect()->back()->with('error', 'Image champ obligatoire');
+            }
+
+            if($request->idmaruqe == null)
+            {
+                return redirect()->back()->with('error','Marque champ obligatoire');
+            }
+            if($request->idcategory == null)
+            {
+                return redirect()->back()->with('error','Categories champ obligatoire');
+            }
+
             $filePaths = [];
             foreach ($request->file('file') as $image)
             {

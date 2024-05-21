@@ -26,6 +26,13 @@
             </div>
         @endif
 
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
+
         <div class="row mb-4 g-4">
 
             <!--left sidebar-->
@@ -148,10 +155,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <h5 class="mb-4" _msttexthash="257673" _msthash="600">Prix,  &amp; Stock</h5>
-                               {{--  <div class="form-check form-switch">
-                                    <label class="form-check-label fw-medium text-primary" for="is_variant" _msttexthash="247845" _msthash="601">Has Variations?</label>
-                                    <input type="checkbox" class="form-check-input" id="is_variant" onchange="isVariantProduct(this)" name="is_variant">
-                                </div> --}}
+
                             </div>
 
                             <!-- without variation start-->
