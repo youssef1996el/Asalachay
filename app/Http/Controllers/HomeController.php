@@ -12,6 +12,7 @@ use App\Models\User;
 use DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 class HomeController extends Controller
 {
     /**
@@ -475,4 +476,52 @@ class HomeController extends Controller
 
         ;
     }
+
+    public function SendMail(Request $request)
+{
+    try
+    {
+        $name = (string)$request->name;
+        $email = (string)$request->email;
+        $typeproblemdelivrasion = (string)$request->typeproblemdelivrasion;
+        $typeproblemserviceclient = (string)$request->typeproblemserviceclient;
+        $typeautreservices = (string)$request->typeautreservices;
+        $messagee = (string)$request->message;
+        $phone = (string)$request->phone;
+        $type = "";
+
+        if(isset($request->typeproblemdelivrasion))
+        {
+            $type = $typeproblemdelivrasion;
+        }
+        else if(isset($request->typeproblemserviceclient))
+        {
+            $type = $typeproblemserviceclient;
+        }
+        else if(isset($request->typeautreservices))
+        {
+            $type = $typeautreservices;
+        }
+
+        Mail::send('Send',
+            [
+                'name' => $name,
+                'email' => $email,
+                'type' => $type,
+                'messagee' => $messagee,
+                'phone' => $phone,
+            ],
+            function ($message) use ($name, $email, $type, $phone,$messagee) {
+                $message->to('asalachay707@gmail.com')
+                    ->subject($type);
+            });
+
+        return redirect()->back()->with('success', 'Message envoyé avec succès');
+    }
+    catch (\Throwable $th)
+    {
+        throw $th;
+    }
+}
+
 }

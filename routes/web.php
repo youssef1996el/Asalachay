@@ -97,6 +97,7 @@ Route::get('Contact'                ,[HomeController::class,'Contact']);
 Route::get('Cart'                   ,[HomeController::class,'Cart']);
 Route::get('changeCart'             ,[HomeController::class,'changeCart']);
 Route::get('getMyCartePageCarte'    ,[HomeController::class,'getMyCartePageCarte']);
+Route::post('SendMail'    ,[HomeController::class,'SendMail']);
 
 
 Route::get('checkout'                   ,[OrderController::class,'checkout']);

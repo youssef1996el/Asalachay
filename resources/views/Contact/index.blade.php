@@ -543,6 +543,11 @@
     <!--breadcrumb-->
 
     <!--contact us section start-->
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <section class="contact-us-section position-relative overflow-hidden z-1 pt-80 pb-120">
         <div class="container">
             <div class="contact-box rounded-2 bg-white overflow-hidden mt-8">
@@ -585,15 +590,9 @@
                     </div>
                     <div class="col-xl-7">
                         <form class="contact-form ps-4 ps-xl-0 py-8 pe-5 contact-form ps-5 ps-xl-4 py-6 pe-6"
-                            action="https://grostore.themetags.com/contact-us" method="POST" id="contact-form">
-                            <input type="hidden" name="_token" value="oZYKJTcUpo0VZZrS1F9qkMhBT0npzHg1bLcleeBN" autocomplete="off">
-                            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response-6643e17797c94"><script>
-  grecaptcha.ready(function() {
-      grecaptcha.execute('', {action: 'recaptcha_token'}).then(function(token) {
-         document.getElementById('g-recaptcha-response-6643e17797c94').value = token;
-      });
-  });
-  </script>
+                            action="{{url('SendMail')}}" method="POST" >
+                            @csrf
+
                             <h3 class="mb-6">Besoin d'aide? Envoyer le message</h3>
                             <div class="row g-4">
 
@@ -623,27 +622,32 @@
 
                                 <div class="col-12">
                                     <div class="checkbox-fields d-flex align-items-center gap-3 flex-wrap my-2">
-                                        <div class="single-field d-inline-flex align-items-center gap-2">
-                                            <div class="theme-checkbox">
-                                                <input type="radio" name="support_for" value="delivery_problem" checked>
-                                                <span class="checkbox-field"><i class="fas fa-check"></i></span>
+                                        <div class="checkbox-container">
+                                            <div class="single-field d-inline-flex align-items-center gap-2">
+                                                <div class="theme-checkbox">
+                                                    <input type="checkbox" name="typeproblemdelivrasion" value="Problème de livraison" checked>
+                                                    <span class="checkbox-field"><i class="fas fa-check"></i></span>
+                                                </div>
+                                                <label class="text-dark fw-semibold">Problème de livraison</label>
                                             </div>
-                                            <label class="text-dark fw-semibold">Problème de livraison</label>
-                                        </div>
-                                        <div class="single-field d-inline-flex align-items-center gap-2">
-                                            <div class="theme-checkbox">
-                                                <input type="radio" name="support_for" value="customer_service">
-                                                <span class="checkbox-field"><i class="fas fa-check"></i></span>
+                                            <div class="single-field d-inline-flex align-items-center gap-2">
+                                                <div class="theme-checkbox">
+                                                    <input type="checkbox" name="typeproblemserviceclient" value="Service client">
+                                                    <span class="checkbox-field"><i class="fas fa-check"></i></span>
+                                                </div>
+                                                <label class="text-dark fw-semibold">Service client</label>
                                             </div>
-                                            <label class="text-dark fw-semibold">Service client</label>
-                                        </div>
-                                        <div class="single-field d-inline-flex align-items-center gap-2">
-                                            <div class="theme-checkbox">
-                                                <input type="radio" name="support_for" value="other_service">
-                                                <span class="checkbox-field"><i class="fas fa-check"></i></span>
+                                            <div class="single-field d-inline-flex align-items-center gap-2">
+                                                <div class="theme-checkbox">
+                                                    <input type="checkbox" name="typeautreservices" value="Autres services">
+                                                    <span class="checkbox-field"><i class="fas fa-check"></i></span>
+                                                </div>
+                                                <label class="text-dark fw-semibold">Autres services</label>
                                             </div>
-                                            <label class="text-dark fw-semibold">Autres services</label>
+
                                         </div>
+
+
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -656,6 +660,20 @@
                             <button type="submit"
                                 class="btn btn-primary btn-md rounded-1 mt-6">Envoyer le message</button>
                         </form>
+
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+                        <script>
+                            $(document).ready(function () {
+
+                                $('input[type="checkbox"]').change(function () {
+            var $checkboxes = $(this).closest('.checkbox-container').find('input[type="checkbox"]');
+
+            // Uncheck all checkboxes except the one that was just clicked
+            $checkboxes.not(this).prop('checked', false);
+        });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
@@ -1304,21 +1322,7 @@
                                     notifyMe('danger', 'Only customer can add products to wishlist');
                         }
 </script>
-        <!--endbuild-->
 
-        <!--page's scripts-->
-                <!--page's script-->
-
-        <!--for pwa-->
-        <script src="https://grostore.themetags.com/public/sw.js"></script>
-        <script>
-            if (!navigator.serviceWorker?.controller) {
-                navigator.serviceWorker?.register("./public/sw.js").then(function(reg) {
-                    // console.log("Service worker has been registered for scope: " + reg.scope);
-                });
-            }
-        </script>
-        <!--for pwa-->
 
         </body>
 
