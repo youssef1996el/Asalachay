@@ -2219,15 +2219,7 @@ color: #fff;
                                  notifyMe('danger', 'Only customer can add products to wishlist');
                      }
 </script>
-     <!--endbuild-->
-
-     <!--page's scripts-->
-
-     <!--page's script-->
-
-     <!--for pwa-->
-
-     <!--for pwa-->
+   
 
      </body>
 
