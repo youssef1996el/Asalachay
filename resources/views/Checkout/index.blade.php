@@ -575,7 +575,7 @@
                                         <div class="label-input-field">
                                             <label>E-mail</label>
                                             <input type="email" name="email"
-                                                placeholder="votre email">
+                                                placeholder="votre email" required>
                                         </div>
                                     </div>
 
@@ -591,7 +591,7 @@
                                         <div class="label-input-field">
                                             <label>Ville</label>
                                             <input type="text" name="city"
-                                                placeholder="Votre ville">
+                                                placeholder="Votre ville" required>
                                         </div>
                                     </div>
 
@@ -599,7 +599,7 @@
                                         <div class="label-input-field">
                                             <label>Adresse</label>
                                             <textarea rows="3" type="text" name="address"
-                                                placeholder="Votre Adresse"></textarea>
+                                                placeholder="Votre Adresse" required></textarea>
                                         </div>
                                     </div>
                                 </div>

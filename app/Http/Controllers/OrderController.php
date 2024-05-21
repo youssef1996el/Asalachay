@@ -57,6 +57,7 @@ class OrderController extends Controller
         ->selectRaw('count(products.id) as product_count')
         ->groupBy('category.id')
         ->get();
+
         return view('Checkout.index')
         ->with('Infos',$Infos)
         ->with('count',$count)
