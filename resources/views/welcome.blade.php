@@ -871,7 +871,7 @@
                                 <div class="d-flex justify-content-between align-items-center mt-10">
                                     <span class="flex-grow-1">
                                         <a href="#"
-                                            class="fs-xs fw-bold d-inline-block explore-btn direct-add-to-cart-btn" value="{{$value->id}}">
+                                            class="fs-xs fw-bold d-inline-block explore-btn direct-add-to-cart-btn BtnAddProductToCart" value="{{$value->id}}">
                                             <span class="add-to-cart-text">Acheter maintenant</span>
                                             <span class="ms-1"><i class="fa-solid fa-arrow-right"></i></span>
                                         </a>
@@ -2219,7 +2219,7 @@ color: #fff;
                                  notifyMe('danger', 'Only customer can add products to wishlist');
                      }
 </script>
-   
+
 
      </body>
 
