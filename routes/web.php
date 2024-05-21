@@ -107,6 +107,8 @@ Route::get('Detail/Order/{id}'          ,[HomeController::class,'Detail']);
 Route::get('About'                   ,[HomeController::class,'About']);
 Route::post('UpdateAdmin'                   ,[HomeController::class,'UpdateAdmin']);
 
+Route::get('AddCartAndCaisse'         ,[ProductController::class,'AddCartAndCaisse']);
+
 
 
 

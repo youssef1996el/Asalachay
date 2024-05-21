@@ -731,8 +731,11 @@
                 <div class="col-xxl-2 col-lg-3 col-md-4 col-sm-6">
                     <div class="gshop-animated-iconbox py-5 px-4 text-center border rounded-3 position-relative overflow-hidden ">
                         <div class="animated-icon d-inline-flex align-items-center justify-content-center rounded-circle position-relative">
-                            <img src="https://grostore.themetags.com/public/uploads/media/5oephm2sfLrK3ISeqQThhR9rA5FKcCsDnRsOezBZ.png"
-                            alt="" class="img-fluid">
+                            <a href="{{url('products/Category/'.$item->id)}}">
+                                <img src="https://grostore.themetags.com/public/uploads/media/5oephm2sfLrK3ISeqQThhR9rA5FKcCsDnRsOezBZ.png"
+                                alt="" class="img-fluid">
+                            </a>
+
                         </div>
 
                         <a href="{{url('products/Category/'.$item->id)}}"
@@ -917,12 +920,7 @@
              </div>
          </div>
          <div class="col-xl-7">
-            {{-- <div class="filter-btns gshop-filter-btn-group text-center text-xl-end mt-4 mt-xl-0">
-                <button class="active" data-filter="*">All Products</button>
-                <button data-filter=".7">Breakfast</button>
-                <button data-filter=".13">Fresh Organic</button>
-                <button data-filter=".16">Vegetables</button>
-            </div> --}}
+
          </div>
      </div>
      <div class="row justify-content-center g-4 mt-5 filter_group">
@@ -935,7 +933,7 @@
 
                     <div class="thumbnail position-relative text-center p-4">
                         <img src="{{asset('storage/'.$item->image)}}" alt="{{$item->name}}"
-                            class="img-fluid">
+                            class="img-fluid IconDisplayModelDetail " value="{{$item->id}}" style="cursor: pointer">
                         <div class="product-btns position-absolute d-flex gap-2 flex-column">
 
 
@@ -1582,13 +1580,22 @@ color: #fff;
                                     <input type="text" readonly="" value="1" name="quantity" min="1" max="195" class="QuantityDetail">
                                     <button type="button" class="increase">+</button>
                                 </div>
+                                <input type="text" class="product_id d-none" >
+                                <div class="d-flex">
+                                    <button type="submit" class="btn btn-secondary btn-md add-to-cart-btn BtnAddProductToCart me-3" >
+                                        <span class="me-2">
+                                            <i class="fa-solid fa-bag-shopping"></i>
+                                        </span>
+                                        <span class="add-to-cart-text" _msttexthash="291005" _msthash="353"> Ajouter au panier </span>
+                                    </button>
+                                    <button type="submit" class="btn btn-secondary btn-md add-to-cart-btn BtnAddProductToCartAndCaisses" >
+                                        <span class="me-2">
+                                            <i class="fa-solid fa-bag-shopping"></i>
+                                        </span>
+                                        <span class="add-to-cart-text" _msttexthash="291005" _msthash="353"> Caisses </span>
+                                    </button>
+                                </div>
 
-                                <button type="submit" class="btn btn-secondary btn-md add-to-cart-btn BtnAddProductToCart" >
-                                    <span class="me-2">
-                                        <i class="fa-solid fa-bag-shopping"></i>
-                                    </span>
-                                    <span class="add-to-cart-text" _msttexthash="291005" _msthash="353"> Ajouter au panier </span>
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -1770,6 +1777,8 @@ color: #fff;
     var DeleteCarte          = "{{ url('DeleteCart') }}";
     var DetailProduct        = "{{ url('DetailProduct')}}";
     var filterByPrice        = "{{ url('filterByPrice')}}";
+    var AddCartAndCaisse     = "{{ url('AddCartAndCaisse')}}";
+    var urlcheckout          = "{{ url('checkout') }}";
 </script>
 <script src="{{asset('Js/welcome.js')}}"></script>
 <script>

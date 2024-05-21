@@ -632,24 +632,100 @@
 
         <!-- modals -->
         <div class="modal fade" id="quickview_modal">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content min-h-400">
-            <div class="modal-body h-100 bg-white">
-                <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content min-h-400">
+                    <div class="modal-body h-100 bg-white">
+                        <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class = "card-wrapper">
+                            <div class = "card">
+                              <!-- card left -->
+                                <div class = "product-imgs">
+                                    <div class = "img-display">
+                                        <div class = "img-showcase">
 
-                <div class="data-preloader-wrapper d-flex align-items-center justify-content-center min-h-400">
-                    <div class="" role="status">
-                        <span class="sr-only"></span>
+                                        </div>
+                                    </div>
+                                    <div class = "img-select">
+
+                                    </div>
+                                </div>
+
+                            <div class = "product-content" style="background: #fff">
+                                <h2 class = "product-title"></h2>
+
+                                <div class = "product-rating">
+                                    <i class = "fas fa-star"></i>
+                                    <i class = "fas fa-star"></i>
+                                    <i class = "fas fa-star"></i>
+                                    <i class = "fas fa-star"></i>
+                                    <i class = "fas fa-star-half-alt"></i>
+                                    <span>4.7(21)</span>
+                                </div>
+
+                                <div class = "product-price">
+                                    <p class = "new-price">Prix: <span class="PriceProductDetail"></span></p>
+                                </div>
+
+                                <div class = "product-detail">
+                                    <h2 class="DescriptionProductDetail">à propos de cet article: </h2>
+                                    <ul>
+                                        <li>
+                                            <i class="fa-solid fa-check me-3"></i>Catégories: <span class="CategoryDetail"></span>
+                                        </li>
+                                        <li>
+                                            <i class="fa-solid fa-check me-3"></i>Marque: <span class="MarqueDetail"></span>
+                                        </li>
+                                        <li>
+                                            <i class="fa-solid fa-check me-3"></i>Disponible: <span class="QteDetail"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <input type="text" class="product_id d-none" >
+                                <div class="d-flex">
+                                    <button type="submit" class="btn btn-secondary btn-md add-to-cart-btn BtnAddProductToCart me-3" >
+                                        <span class="me-2">
+                                            <i class="fa-solid fa-bag-shopping"></i>
+                                        </span>
+                                        <span class="add-to-cart-text" _msttexthash="291005" _msthash="353"> Ajouter au panier </span>
+                                    </button>
+                                    <button type="submit" class="btn btn-secondary btn-md add-to-cart-btn BtnAddProductToCartAndCaisses" >
+                                        <span class="me-2">
+                                            <i class="fa-solid fa-bag-shopping"></i>
+                                        </span>
+                                        <span class="add-to-cart-text" _msttexthash="291005" _msthash="353"> Caisses </span>
+                                    </button>
+                                </div>
+
+
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    {{-- <script>
+                        // Reinitialize slider functionality
+                        const imgs = document.querySelectorAll('.img-select a');
+                        const imgBtns = [...imgs];
+                        let imgId = 1;
 
-                <div class="product-info">
+                        imgBtns.forEach((imgItem) => {
+                            imgItem.addEventListener('click', (event) => {
+                                event.preventDefault();
+                                imgId = imgItem.dataset.id;
+                                slideImage();
+                            });
+                        });
 
+                        function slideImage() {
+                            const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
+
+                            document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+                        }
+
+                        window.addEventListener('resize', slideImage);
+                    </script> --}}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
         <!-- modals -->
 
 
@@ -821,6 +897,8 @@
     var DeleteCarte          = "{{ url('DeleteCart') }}";
     var DetailProduct        = "{{ url('DetailProduct')}}";
     var filterByPrice        = "{{ url('filterByPrice')}}";
+    var AddCartAndCaisse     = "{{ url('AddCartAndCaisse')}}";
+    var urlcheckout          = "{{ url('checkout') }}";
 </script>
 <script src="{{asset('Js/welcome.js')}}"></script>
 <script>

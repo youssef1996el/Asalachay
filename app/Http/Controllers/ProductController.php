@@ -692,4 +692,63 @@ class ProductController extends Controller
             //throw $th;
         }
     }
+
+
+    public function AddCartAndCaisse(Request $request)
+    {
+       try
+       {
+            $checkProductHasStock = Stocks::where('idproduct',$request->idproduct)->select('qte')->first();
+
+            if($checkProductHasStock->qte <=0)
+            {
+                return response()->json([
+                    'status'      => 400,
+                ]);
+            }
+            else
+            {
+                $shellexec = exec('getmac');
+                // Remove spaces
+                $shellexec = str_replace(' ', '', $shellexec);
+
+                // Remove 'N/A' string
+                $shellexec = str_replace('N/A', '', $shellexec);
+                $checkProductExisteCart = Carte::where('macaddress',$shellexec)->where('idproduct',$request->idproduct)->count();
+                $priceProduct = Products::where('id',$request->idproduct)->first();
+                if($checkProductExisteCart > 0)
+                {
+                    $OldInformationProduct = Carte::where('macaddress',$shellexec)->where('idproduct',$request->idproduct)->first();
+
+                    $UpdateCart   = Carte::where('macaddress',$shellexec)->where('idproduct',$request->idproduct)->update([
+                        'qte'        => $OldInformationProduct->qte + ($request->qte > 1 ? $request->qte : 1),
+                        'price'      => $priceProduct->price,
+                        'total'      => $priceProduct->price * ($OldInformationProduct->qte + ($request->qte > 1 ? $request->qte : 1) ),
+
+                    ]);
+                    return response()->json([
+                        'status'      => 200,
+                    ]);
+                }
+                else
+                {
+
+                    $Carte = Carte::create([
+                        'qte'              => ($request->qte > 1 ? $request->qte : 1),
+                        'price'            => $priceProduct->price,
+                        'total'            => ($request->qte > 1 ? $request->qte : 1) * $priceProduct->price,
+                        'macaddress'       => $shellexec,
+                        'idproduct'        => $request->idproduct,
+                    ]);
+                    return response()->json([
+                        'status'      => 200,
+                    ]);
+                }
+            }
+       }
+        catch (\Throwable $th)
+        {
+            throw $th;
+        }
+    }
 }

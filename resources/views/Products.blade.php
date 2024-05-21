@@ -647,7 +647,7 @@
 
                                     <div class="thumbnail position-relative text-center p-4">
                                         <img src="{{asset('storage/'.$item->image)}}" alt="{{$item->name}}"
-                                            class="img-fluid">
+                                            class="img-fluid IconDisplayModelDetail"  value={{$item->id}} style="cursor: pointer">
                                         <div class="product-btns position-absolute d-flex gap-2 flex-column">
 
 
@@ -960,18 +960,19 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="d-flex align-items-center gap-3 flex-wrap mt-5">
-                                    <div class="product-qty qty-increase-decrease d-flex align-items-center">
-                                        <button type="button" class="decrease">-</button>
-                                        <input type="text" readonly="" value="1" name="quantity" min="1" max="195" class="QuantityDetail">
-                                        <button type="button" class="increase">+</button>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-secondary btn-md add-to-cart-btn BtnAddProductToCart">
+                                <input type="text" class="product_id d-none" >
+                                <div class="d-flex">
+                                    <button type="submit" class="btn btn-secondary btn-md add-to-cart-btn BtnAddProductToCart me-3" >
                                         <span class="me-2">
                                             <i class="fa-solid fa-bag-shopping"></i>
                                         </span>
                                         <span class="add-to-cart-text" _msttexthash="291005" _msthash="353"> Ajouter au panier </span>
+                                    </button>
+                                    <button type="submit" class="btn btn-secondary btn-md add-to-cart-btn BtnAddProductToCartAndCaisses" >
+                                        <span class="me-2">
+                                            <i class="fa-solid fa-bag-shopping"></i>
+                                        </span>
+                                        <span class="add-to-cart-text" _msttexthash="291005" _msthash="353"> Caisses </span>
                                     </button>
                                 </div>
                             </div>
@@ -1152,6 +1153,8 @@
     var DeleteCarte    = "{{ url('DeleteCart') }}";
     var DetailProduct  = "{{ url('DetailProduct')}}";
     var filterByPrice  = "{{ url('filterByPrice')}}";
+    var AddCartAndCaisse     = "{{ url('AddCartAndCaisse')}}";
+    var urlcheckout          = "{{ url('checkout') }}";
 </script>
 <script src="{{asset('Js/welcome.js')}}"></script>
 <script>

@@ -165,7 +165,7 @@ $(document).ready(function () {
                         var modifiedDescription = description.replace(/"/g, '');
                     }
 
-
+                    $('.product_id').val(response.DetailProduct.id);
                     $('.DescriptionProductDetail').append(modifiedDescription);
                     $('.CategoryDetail').text(response.DetailProduct.category);
                     $('.MarqueDetail').text(response.DetailProduct.marque);
@@ -223,6 +223,31 @@ $(document).ready(function () {
 
                     // Call this function after dynamically adding thumbnails
                     reapplyEventListeners();
+                }
+            }
+        });
+    });
+
+
+    $('.BtnAddProductToCartAndCaisses').on('click',function(e)
+    {
+        e.preventDefault();
+        var idproduct = $('.product_id').val();
+        var qte       = $('.QuantityDetail').val();
+        $.ajax({
+            type: "get",
+            url: AddCartAndCaisse,
+            data:
+            {
+                idproduct : idproduct,
+                qte       : qte,
+            },
+            dataType: "json",
+            success: function (response)
+            {
+                if(response.status == 200)
+                {
+                    window.location.href = urlcheckout;
                 }
             }
         });
