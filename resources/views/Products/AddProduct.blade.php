@@ -72,7 +72,7 @@
                                     <div class="tt-product-thumb show-selected-files mt-3">
                                         <div class="avatar avatar-xl cursor-pointer choose-media">
                                             <label for="fileInput" class="input-div">
-                                                <input id="fileInput" class="input" name="file[]" type="file" multiple>
+                                                <input id="fileInput" class="input" name="file[]" type="file" >
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" class="icon">
                                                     <polyline points="16 16 12 12 8 16"></polyline>
                                                     <line y2="21" x2="12" y1="12" x1="12"></line>
