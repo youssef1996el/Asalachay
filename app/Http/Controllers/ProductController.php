@@ -428,6 +428,7 @@ class ProductController extends Controller
                 }
                 else
                 {
+
                     $Carte = Carte::create([
                         'qte'              => ($request->qte > 1 ? $request->qte : 1),
                         'price'            => $priceProduct->price,

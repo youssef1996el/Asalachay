@@ -1051,6 +1051,7 @@
              </div>
              <div class="mt-4">
                 <div class="row g-4">
+
                     @foreach ($Best_Deals as $item)
                         <div class="col-lg-6">
                             <div class="horizontal-product-card d-sm-flex align-items-center p-3 bg-white rounded-2 border card-md gap-4">
